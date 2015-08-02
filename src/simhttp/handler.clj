@@ -5,18 +5,18 @@
 
 (defroutes app-routes
   (GET "/" [:as request]
-       (do
-         (println request)
-         "GET"))
+       "GET")
   (POST "/" [:as request]
-        (do
-          (println request)
-          "POST"))
+        "POST")
   (PUT "/" [:as request]
-        (do
-          (println request)
-          "PUT"))
+       "PUT")
   (route/not-found "Not Found"))
 
+(defn wrap-debug
+  [handler]
+  (fn [request]
+    (println request)
+    (handler request)))
+
 (def app
-  (wrap-defaults app-routes api-defaults))
+  (wrap-debug (wrap-defaults app-routes api-defaults)))
