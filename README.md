@@ -1,6 +1,16 @@
 # simhttp
 
-FIXME
+To start server in port 5000
+
+    lein ring server-headless 5000
+
+To test file uploading using HTTP POST:
+
+    curl -X POST -F file=@<path-to-file> http://<host-ip>:5000
+
+To test file uploading using HTTP PUT:
+
+    curl -X PUT -F file=@test.txt http://localhost:3000
 
 ## Prerequisites
 
